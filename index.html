@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F6C445">
+  <title>Den Gule Café – morgenmad, brunch og kaffe i Jægergårdsgade, Aarhus</title>
+  <meta name="description" content="Farverig og hjemlig café på hjørnet af Jægergårdsgade og Frederiks Allé. Hjemmelavet morgenmad, brunch, toasts, kaffe og juice. Åben alle dage fra kl. 9. Kun walk-in.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2215%22 fill=%22%23F6C445%22 stroke=%22%232B2433%22 stroke-width=%222%22/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,600..900,100&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gul: '#F6C445',
+            lyserod: '#F4A6BD',
+            gron: '#2E7D5B',
+            lilla: '#5A3D7A',
+            blaek: '#2B2433',
+          },
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            body: ['Nunito', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    .display { font-variation-settings: "SOFT" 100; }
+    /* Billeder: hvis en fil mangler, bliver den farvede baggrund stående */
+    .frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    /* Billederne kastes ind som fotos på et cafébord.
+       Uden JS eller med reduceret bevægelse står de bare stille og synlige. */
+    @keyframes toss {
+      from { opacity: 0; translate: var(--fx, 0) var(--fy, 40%); rotate: var(--fr, 0deg); }
+      35%  { opacity: 1; }
+      to   { opacity: 1; translate: 0 0; rotate: 0deg; }
+    }
+    .toss.is-waiting { opacity: 0; }
+    .toss.is-tossed { animation: toss .85s var(--d, 0ms) cubic-bezier(.2, 1.15, .35, 1) both; }
+    @media (prefers-reduced-motion: reduce) {
+      .toss.is-waiting { opacity: 1; }
+      .toss.is-tossed { animation: none; }
+    }
+
+    /* Mobil: plads til genvejsbjælken i bunden */
+    @media (max-width: 639px) {
+      footer { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px)); }
+    }
+  </style>
+</head>
+<body class="font-body text-blaek bg-white antialiased">
+
+  <!-- Nav -->
+  <header class="bg-gul">
+    <nav class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between gap-4" aria-label="Hovedmenu">
+      <a href="#top" class="display font-display font-black text-xl leading-none whitespace-nowrap">Den Gule Café</a>
+      <div class="flex items-center gap-4 text-sm font-semibold">
+        <a href="#menu" class="hidden sm:inline hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek">Menu</a>
+        <a href="#aabningstider" class="hidden sm:inline hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek">Åbningstider</a>
+        <a href="#find-os" class="hidden sm:inline hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek">Find os</a>
+        <a href="https://www.instagram.com/dengulecafe/" target="_blank" rel="noopener" aria-label="Den Gule Café på Instagram" class="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-full hover:bg-white/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="bg-gul overflow-x-clip">
+    <div class="max-w-5xl mx-auto px-5 pt-8 pb-16 md:pt-14 md:pb-24 grid md:grid-cols-12 gap-10 items-center">
+      <div class="md:col-span-7">
+        <h1 class="display font-display font-black text-[2.6rem] leading-[1.02] md:text-6xl md:leading-[1.02]">
+          Morgenmad, brunch og kaffe på hjørnet af Jægergårdsgade
+        </h1>
+        <p class="mt-6 text-lg md:text-xl leading-relaxed max-w-xl">
+          En farverig og hjemlig café med mad lavet fra bunden. Vi har åbent alle dage fra kl. 9, og vi tager ikke imod bordbestillinger, så kom bare forbi.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#menu" class="inline-block bg-blaek text-white font-bold px-6 py-3 rounded-full hover:bg-lilla focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek">Se hvad vi laver</a>
+          <a href="#find-os" class="inline-block bg-white text-blaek font-bold px-6 py-3 rounded-full hover:bg-lyserod focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek">Find vej</a>
+        </div>
+      </div>
+      <div class="md:col-span-5 relative h-[22rem] md:h-[26rem]">
+                <figure style="--fx:-70%;--fy:-10%;--fr:-28deg;--d:0ms" class="toss frame absolute left-2 top-2 w-[62%] aspect-[4/5] bg-white p-2 pb-8 shadow-lg -rotate-6">
+          <div class="w-full h-full bg-lyserod overflow-hidden"><img src="img/1.jpg" alt="Skåle med yoghurt, granola og friske bær" onerror="this.remove()"></div>
+        </figure>
+        <figure style="--fx:70%;--fy:-5%;--fr:24deg;--d:140ms" class="toss frame absolute right-0 top-10 w-[60%] aspect-[4/5] bg-white p-2 pb-8 shadow-lg rotate-3">
+          <div class="w-full h-full bg-gron overflow-hidden"><img src="img/2.jpg" alt="Lakserugbrød på den gule flisedisk foran espressomaskinen" onerror="this.remove()"></div>
+        </figure>
+        <figure style="--fx:0%;--fy:70%;--fr:-14deg;--d:300ms" class="toss frame absolute left-[22%] bottom-0 w-[58%] aspect-[4/5] bg-white p-2 pb-8 shadow-xl rotate-1">
+          <div class="w-full h-full bg-lilla overflow-hidden"><img src="img/hero.jpg" alt="Brunch med avocado, laks, æg og friskpresset juice" onerror="this.remove()"></div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Åbent-linje -->
+  <div class="bg-lyserod">
+    <p class="max-w-5xl mx-auto px-5 py-4 font-bold text-center md:text-left">
+      Mandag til lørdag 9–18, søndag 9–16. Kun walk-in, både inde og ude.
+    </p>
+  </div>
+
+  <!-- Menu -->
+  <section id="menu" class="bg-lilla text-white">
+    <div class="max-w-5xl mx-auto px-5 py-16 md:py-24">
+      <h2 class="display font-display font-bold text-4xl md:text-5xl">Det får du hos os</h2>
+      <p class="mt-4 text-white/85 max-w-xl text-lg">Alt kan spises her eller tages med på vejen.</p>
+      <dl class="mt-10 grid md:grid-cols-2 gap-x-12 gap-y-7">
+        <div>
+          <dt class="display font-display font-bold text-2xl text-gul">Nillers brunch</dt>
+          <dd class="mt-1 text-white/85">Vores brunchtallerken med æg, brød, ost, lidt sødt og frisk frugt.</dd>
+        </div>
+        <div>
+          <dt class="display font-display font-bold text-2xl text-gul">Smoothie bowls</dt>
+          <dd class="mt-1 text-white/85">Farverige bowls med frisk frugt, granola og yoghurt.</dd>
+        </div>
+        <div>
+          <dt class="display font-display font-bold text-2xl text-gul">Toasts og paninier</dt>
+          <dd class="mt-1 text-white/85">Store, hjemmelavede og lige til frokost.</dd>
+        </div>
+        <div>
+          <dt class="display font-display font-bold text-2xl text-gul">Croissanter og kanelsnurrer</dt>
+          <dd class="mt-1 text-white/85">Friskbagt hver morgen. Kom tidligt, de bliver revet væk.</dd>
+        </div>
+        <div>
+          <dt class="display font-display font-bold text-2xl text-gul">Friskpresset juice</dt>
+          <dd class="mt-1 text-white/85">Rødbede, gulerod, æble og appelsin, presset når du bestiller.</dd>
+        </div>
+        <div>
+          <dt class="display font-display font-bold text-2xl text-gul">Kaffe, matcha og drinks</dt>
+          <dd class="mt-1 text-white/85">Flat white, matcha latte, øl, vin og drinks sidst på dagen.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Billeder -->
+  <section class="bg-gul overflow-x-clip">
+    <div class="max-w-5xl mx-auto px-5 py-16 md:py-24">
+      <h2 class="display font-display font-bold text-4xl md:text-5xl">Fra caféen</h2>
+      <p class="mt-4 text-lg max-w-xl">Nomineret til bedste morgenmad ved SMAGprisen 2025.</p>
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+        <a href="https://www.instagram.com/dengulecafe/" target="_blank" rel="noopener" class="toss toss-side frame block aspect-[4/5] rounded-2xl overflow-hidden bg-lyserod focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek"><img src="img/g-smagprisen.jpg" alt="Morgenmad, croissant og kaffe ved siden af SMAGprisen-nomineringen" loading="lazy" onerror="this.remove()"></a>
+        <a href="https://www.instagram.com/dengulecafe/" target="_blank" rel="noopener" class="toss toss-side frame block aspect-[4/5] rounded-2xl overflow-hidden bg-gron focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek"><img src="img/g-bagvaerk.jpg" alt="Friskbagte snurrer og croissanter i montren" loading="lazy" onerror="this.remove()"></a>
+        <a href="https://www.instagram.com/dengulecafe/" target="_blank" rel="noopener" class="toss toss-side frame block aspect-[4/5] rounded-2xl overflow-hidden bg-lilla focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek"><img src="img/g-juice.jpg" alt="Friskpresset juice og cortado på en bakke" loading="lazy" onerror="this.remove()"></a>
+        <a href="https://www.instagram.com/dengulecafe/" target="_blank" rel="noopener" class="toss toss-side frame block aspect-[4/5] rounded-2xl overflow-hidden bg-lilla focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek"><img src="img/g-matcha.jpg" alt="Iskold matcha latte i solen" loading="lazy" onerror="this.remove()"></a>
+        <a href="https://www.instagram.com/dengulecafe/" target="_blank" rel="noopener" class="toss toss-side frame block aspect-[4/5] rounded-2xl overflow-hidden bg-lyserod focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek"><img src="img/g-grod.jpg" alt="Grød med bær, granola og yoghurt" loading="lazy" onerror="this.remove()"></a>
+        <a href="https://www.instagram.com/dengulecafe/" target="_blank" rel="noopener" class="toss toss-side frame block aspect-[4/5] rounded-2xl overflow-hidden bg-gron focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek"><img src="img/g-udeservering.jpg" alt="Udeservering med blomster og parasoller på hjørnet" loading="lazy" onerror="this.remove()"></a>
+      </div>
+      <a href="https://www.instagram.com/dengulecafe/" target="_blank" rel="noopener" class="mt-8 inline-flex items-center gap-2 bg-blaek text-white font-bold px-6 py-3 rounded-full hover:bg-lilla focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        Flere billeder på @dengulecafe
+      </a>
+    </div>
+  </section>
+
+  <!-- Om caféen -->
+  <section class="bg-white overflow-x-clip">
+    <div class="max-w-5xl mx-auto px-5 py-16 md:py-24 grid md:grid-cols-12 gap-10 items-center">
+      <div style="--fx:-45%;--fy:15%;--fr:-10deg" class="toss md:col-span-5 frame aspect-[4/5] rounded-3xl overflow-hidden bg-gul">
+        <img src="img/3.jpg" alt="Fyldt udeservering under parasollerne en solskinsdag" onerror="this.remove()">
+      </div>
+      <div class="md:col-span-7">
+        <h2 class="display font-display font-bold text-4xl md:text-5xl">Gul udenpå, farverig indeni</h2>
+        <p class="mt-6 text-lg leading-relaxed max-w-xl">
+          Bag disken står Channie, som åbnede caféen i november 2020. Væggene er gule, lilla, grønne og lyserøde, møblerne er kurv, planterne er ægte, og maden er lavet fra bunden hver morgen.
+        </p>
+        <p class="mt-4 text-lg leading-relaxed max-w-xl">
+          Tag et brætspil fra hylden, sæt dig ude under varmelamperne, eller tag det hele med. Du bestemmer.
+        </p>
+        <a href="https://www.instagram.com/dengulecafe/" target="_blank" rel="noopener" class="mt-8 inline-block bg-lyserod text-blaek font-bold px-6 py-3 rounded-full hover:bg-gul focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek">Følg os på Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Åbningstider -->
+  <section id="aabningstider" class="bg-gron text-white">
+    <div class="max-w-5xl mx-auto px-5 py-16 md:py-24 grid md:grid-cols-2 gap-10">
+      <div>
+        <h2 class="display font-display font-bold text-4xl md:text-5xl">Åbningstider</h2>
+        <table class="mt-8 w-full max-w-sm text-lg">
+          <tbody>
+            <tr class="border-b border-white/25"><td class="py-3">Mandag</td><td class="py-3 text-right font-bold">9–18</td></tr>
+            <tr class="border-b border-white/25"><td class="py-3">Tirsdag</td><td class="py-3 text-right font-bold">9–18</td></tr>
+            <tr class="border-b border-white/25"><td class="py-3">Onsdag</td><td class="py-3 text-right font-bold">9–18</td></tr>
+            <tr class="border-b border-white/25"><td class="py-3">Torsdag</td><td class="py-3 text-right font-bold">9–18</td></tr>
+            <tr class="border-b border-white/25"><td class="py-3">Fredag</td><td class="py-3 text-right font-bold">9–18</td></tr>
+            <tr class="border-b border-white/25"><td class="py-3">Lørdag</td><td class="py-3 text-right font-bold">9–18</td></tr>
+            <tr><td class="py-3">Søndag</td><td class="py-3 text-right font-bold">9–16</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="md:pt-20">
+        <h3 class="display font-display font-bold text-2xl text-gul">Godt at vide</h3>
+        <ul class="mt-4 space-y-3 text-lg">
+          <li>Vi tager ikke imod bordbestillinger. I weekenden er det klogt at komme tidligt.</li>
+          <li>Alt på kortet kan tages med.</li>
+          <li>Der er borde ude med varmelamper og parasoller.</li>
+          <li>Barnevogne og brætspil er velkomne.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Find os -->
+  <section id="find-os" class="bg-white">
+    <div class="max-w-5xl mx-auto px-5 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <h2 class="display font-display font-bold text-4xl md:text-5xl">Find os</h2>
+        <p class="mt-6 text-lg leading-relaxed">
+          Vi ligger i den gule bygning på hjørnet af Jægergårdsgade og Frederiks Allé, lige op ad trapperne. To minutter fra Banegården.
+        </p>
+        <address class="mt-6 not-italic text-lg space-y-2">
+          <p>Jægergårdsgade 2A<br>8000 Aarhus C</p>
+          <p><a href="tel:+4526718967" class="font-bold underline underline-offset-4 hover:text-lilla focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek">26 71 89 67</a></p>
+          <p><a href="mailto:dengulecafe@hotmail.com" class="font-bold underline underline-offset-4 hover:text-lilla focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek">dengulecafe@hotmail.com</a></p>
+        </address>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="https://www.instagram.com/dengulecafe/" target="_blank" rel="noopener" class="inline-block bg-gul text-blaek font-bold px-5 py-2.5 rounded-full hover:bg-lyserod focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek">Instagram</a>
+          <a href="https://www.facebook.com/p/Den-Gule-Cafe-100064242962758/" target="_blank" rel="noopener" class="inline-block bg-gul text-blaek font-bold px-5 py-2.5 rounded-full hover:bg-lyserod focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blaek">Facebook</a>
+        </div>
+      </div>
+      <div class="rounded-3xl overflow-hidden bg-gul aspect-[4/3]">
+        <iframe
+          title="Kort over Den Gule Café, Jægergårdsgade 2A, Aarhus"
+          src="https://www.google.com/maps?q=J%C3%A6gerg%C3%A5rdsgade%202A%2C%208000%20Aarhus%20C&output=embed"
+          width="100%" height="100%" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blaek text-white">
+    <div class="max-w-5xl mx-auto px-5 py-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div>
+        <p class="display font-display font-black text-2xl">Den Gule Café</p>
+        <p class="mt-1 text-white/70">Jægergårdsgade 2A, 8000 Aarhus C</p>
+      </div>
+      <p class="text-sm text-white/55">Udkast lavet af Ron, 53 61 36 99, ronnyhong723@gmail.com</p>
+    </div>
+  </footer>
+
+  <!-- Mobil: genveje i bunden -->
+  <nav class="sm:hidden fixed inset-x-0 bottom-0 z-50 bg-blaek text-white shadow-[0_-4px_16px_rgba(43,36,51,.25)]" style="padding-bottom: env(safe-area-inset-bottom, 0px)" aria-label="Genveje">
+    <div class="grid grid-cols-3">
+      <a href="https://www.google.com/maps/dir/?api=1&amp;destination=J%C3%A6gerg%C3%A5rdsgade+2A%2C+8000+Aarhus+C" target="_blank" rel="noopener" class="flex flex-col items-center justify-center gap-1 py-2.5 text-xs font-bold focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-gul active:bg-white/10"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Find vej</a>
+      <a href="tel:+4526718967" class="flex flex-col items-center justify-center gap-1 py-2.5 text-xs font-bold focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-gul active:bg-white/10"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Ring</a>
+      <a href="https://www.instagram.com/dengulecafe/" target="_blank" rel="noopener" class="flex flex-col items-center justify-center gap-1 py-2.5 text-xs font-bold focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-gul active:bg-white/10 text-gul"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>Instagram</a>
+    </div>
+  </nav>
+
+  <script>
+    (function () {
+      var photos = Array.prototype.slice.call(document.querySelectorAll('.toss'));
+      var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!photos.length || calm || !('IntersectionObserver' in window)) return;
+
+      // Gallerifotos kastes ind fra den side af skærmen de lander på
+      function aim(el) {
+        if (!el.classList.contains('toss-side')) return;
+        var r = el.getBoundingClientRect();
+        var fromLeft = r.left + r.width / 2 < window.innerWidth / 2;
+        el.style.setProperty('--fx', fromLeft ? '-55%' : '55%');
+        el.style.setProperty('--fy', '25%');
+        el.style.setProperty('--fr', fromLeft ? '-14deg' : '12deg');
+      }
+
+      // Et foto kastes ind når 20 % af det er synligt, og gøres klar igen
+      // når det er helt ude af skærmen, så animationen kører hver gang.
+      var io = new IntersectionObserver(function (entries) {
+        var incoming = [];
+        entries.forEach(function (e) {
+          var el = e.target;
+          if (!e.isIntersecting) {
+            if (el.classList.contains('is-tossed')) {
+              el.classList.remove('is-tossed');
+              el.classList.add('is-waiting');
+              aim(el);
+            }
+          } else if (e.intersectionRatio >= 0.2 && !el.classList.contains('is-tossed')) {
+            incoming.push(e);
+          }
+        });
+        incoming.sort(function (a, b) {
+          return (a.boundingClientRect.top - b.boundingClientRect.top) || (a.boundingClientRect.left - b.boundingClientRect.left);
+        });
+        incoming.forEach(function (e, i) {
+          var el = e.target;
+          if (el.classList.contains('toss-side')) el.style.setProperty('--d', (i * 90) + 'ms');
+          el.classList.remove('is-waiting');
+          el.classList.add('is-tossed');
+        });
+      }, { threshold: [0, 0.2] });
+
+      photos.forEach(function (el) {
+        aim(el);
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+          // Synlig ved indlæsning: kast med det samme
+          el.classList.add('is-tossed');
+        } else {
+          el.classList.add('is-waiting');
+        }
+        io.observe(el);
+      });
+    })();
+  </script>
+
+</body>
+</html>
